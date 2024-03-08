@@ -9,4 +9,5 @@ urlpatterns = [
     path('<int:report_id>/resolve/', views.ReportResolveView.as_view(), name='report_resolve'),
     path('<int:report_id>/dismiss/', views.ReportDismissView.as_view(), name='report_dismiss'),
     path('<int:auto_id>/delete_all/', views.ReportDeleteAllView.as_view(), name='report_delete_all'),
+    path('', views.report, name='report'),
 ]

@@ -1,5 +1,9 @@
 from django.urls import path
 from . import views
+from django.contrib import admin
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = 'autos'
 urlpatterns = [
@@ -24,4 +28,20 @@ urlpatterns = [
     # your other url patterns
     path('<int:auto_pk>/images/<int:image_pk>/update/', views.auto_image_update, name='auto_image_update'),
     path('<int:auto_pk>/images/<int:image_pk>/delete/', views.auto_image_delete, name='auto_image_delete'),
+]
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('autos/', include('autos.urls', namespace='autos')),
+    path('reports/', include('reports.urls', namespace='reports')),
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL)
+
+urlpatterns = [
+    path('', views.index, name='index'),
+    path('advertisements/', views.advertisements, name='advertisements'),
+    path('reports/', views.reports, name='reports'),
+
 ]
