@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автоплатформа</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Автоплатформа</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Головна</a></li>
+                    <li><a href="#">Продати авто</a></li>
+                    <li><a href="#">Купити авто</a></li>
+                    <li><a href="#">Правила</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="search-section">
+            <h2>Пошук авто</h2>
+            <form>
+                <label for="brand">Марка:</label>
+                <select id="brand" name="brand">
+                    <option value="bmw">BMW</option>
+                    <option value="daewoo">Daewoo</option>
+                </select>
+                <label for="model">Модель:</label>
+                <select id="model" name="model">
+                    <option value="x5">X5</option>
+                    <option value="lanos">Lanos</option>
+                </select>
+                <button type="submit">Пошук</button>
+            </form>
+        </section>
+        <section class="results-section">
+            <h2>Результати пошуку</h2>
+            <div class="result-card">
+                <img src="bmw-x5.jpg" alt="BMW X5">
+                <h3>BMW X5</h3>
+                <p>Ціна: 50000 USD</p>
+                <button>Додати в обране</button>
+            </div>
+            <div class="result-card">
+                <img src="daewoo-lanos.jpg" alt="Daewoo Lanos">
+                <h3>Daewoo Lanos</h3>
+                <p>Ціна: 10000 USD</p>
+                <button>Додати в обране</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2022 Автоплатформа. Всі права захищені.</p>
+    </footer>
+</body>
+</html>
