@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h1>{% if auto.pk %}Update{% else %}Add{% endif %} Auto</h1>
+    <form method="post" enctype="multipart/form-data" class="auto-form">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="brand">Brand:</label>
+        <input type="text" id="brand" name="brand" class="form-control" value="{{ auto.brand }}">
+      </div>
+      <div class="form-group">
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="model" class="form-control" value="{{ auto.model }}">
+      </div>
+      <div class="form-group">
+        <label for="category">Category:</label>
+        <select id="category" name="category" class="form-control">
+          <option value="economy" {% if auto.category =='economy' %}selected{% endif %}>Economy</option>
+          <option value="mid-range" {% if auto.category =='mid-range' %}selected{% endif %}>Mid-Range</option>
+          <option value="high-end" {% if auto.category =='high-end' %}selected{% endif %}>High-End</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">{% if auto.pk %}Update{% else %}Add{% endif %}</button>
+    </form>
+  </div>
+{% endblock %}
