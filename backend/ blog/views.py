@@ -1,9 +1,11 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post
-from .forms import PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, get_object_or_404, redirect
+
 from . import utils
+from .forms import PostForm
+from .models import Post
+
 
 def post_list(request):
     posts = Post.objects.filter(published_date__isnull=False).order_by('-published_date')
