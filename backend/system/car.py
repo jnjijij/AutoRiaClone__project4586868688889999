@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse
-from .models import Car, CarAd, CarAdView
-from .forms import CarForm
+from models import Car, CarAd, CarAdView
+from forms import CarForm
 
 def index(request):
     cars = Car.objects.all()
