@@ -10,6 +10,7 @@ class Auto(models.Model):
         return self.title
 
 class Image(models.Model):
+    objects = None
     image = models.ImageField(upload_to='images/')
 
     def __str__(self):

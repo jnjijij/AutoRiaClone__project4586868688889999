@@ -3,3 +3,7 @@ INSTALLED_APPS = [
     # ...
     'core',
 ]
+
+
+def DATABASES():
+    return None
