@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Auto
-from .forms import AutoPriceForm
+from models import Auto
+from forms import AutoPriceForm
 
 def index(request):
     autos = Auto.objects.all()

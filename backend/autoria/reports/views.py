@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import View
 
-from .forms import AutoImage
+
 from .models import Auto
 from .models import AutoImage
 from .models import Report

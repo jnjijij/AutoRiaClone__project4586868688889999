@@ -25,3 +25,23 @@ class AdForm(forms.ModelForm):
     class Meta:
         model = Ad
         fields = ['user', 'car', 'price', 'content']
+
+
+class CarBrand:
+    pass
+
+
+class CarModel:
+    pass
+
+
+class CarPrice:
+    pass
+
+
+class User:
+    pass
+
+
+def Ad():
+    return None
