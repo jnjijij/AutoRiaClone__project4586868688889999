@@ -1,4 +1,4 @@
-from django.db.models import Model, CharField, IntegerField, DateField, TextField, ForeignKey, CASCADE
+from django.db.models import Model, CharField, IntegerField, DateField, TextField, ForeignKey, CASCADE, models
 from autos.models import Auto
 
 class Report(models.Model):
@@ -17,3 +17,11 @@ class Report(models.Model):
 
     def __str__(self):
         return f'{self.user} reported {self.auto}'
+
+
+class Auto:
+    pass
+
+
+class AutoImage:
+    pass

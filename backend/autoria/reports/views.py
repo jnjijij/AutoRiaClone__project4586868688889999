@@ -1,6 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
+from django.views import View
+
 from .models import Report, Auto
 from django.shortcuts import render, redirect
 from .models import AutoImage
@@ -62,3 +64,15 @@ def auto_image_delete(request, auto_pk, image_pk):
 def report(request):
     autos = Auto.objects.all()
     return render(request, 'reports/report.html', {'autos': autos})
+
+
+class ReportCreateView:
+    @classmethod
+    def as_view(cls):
+        pass
+
+
+class ReportResolveView:
+    @classmethod
+    def as_view(cls):
+        pass

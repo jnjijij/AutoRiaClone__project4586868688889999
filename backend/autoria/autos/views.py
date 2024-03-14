@@ -1,18 +1,19 @@
-from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
+from django.shortcuts import redirect
+from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.utils.decorators import method_decorator
-from django.views.decorators.http import require_POST
-from django.shortcuts import render, redirect
-from .models import Auto, Image
-from .forms import ImageForm
-from django.shortcuts import render
-from .forms import AutoImageForm
-from .models import Auto, Autosalon, AutoImage, Report
-from .forms import AutoForm, AutosalonForm, AutoImageForm, ReportForm
-from django.shortcuts import render
-from .models import Advertisement
+from django.views import View
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+
+from backend.autoria_clone.autoria.forms import AutoPriceForm
+from forms import AutoForm, AutosalonForm, AutoImageForm, ReportForm
+from forms import ImageForm
+from models import Advertisement
+from models import Auto, Autosalon, AutoImage, Report
+from models import Image
+
 
 class AutoListView(ListView):
     model = Auto
@@ -317,3 +318,35 @@ def upload_auto_image(request):
 def advertisements(request):
     ads = Advertisement.objects.all()
     return render(request, 'autos/advertisements.html', {'ads': ads})
+
+
+def auto_list():
+    return None
+
+
+def auto_create():
+    return None
+
+
+def auto_detail():
+    return None
+
+
+def auto_update():
+    return None
+
+
+def auto_delete():
+    return None
+
+
+def auto_images():
+    return None
+
+
+def index():
+    return None
+
+
+def reports():
+    return None

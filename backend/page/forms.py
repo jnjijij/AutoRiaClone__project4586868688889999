@@ -1,5 +1,7 @@
 from django import forms
-from models import CarBrand, CarModel, CarPrice, User, Ad
+
+from models import CarBrand, CarModel, CarPrice, User
+
 
 class CarBrandForm(forms.ModelForm):
     class Meta:
@@ -18,3 +20,5 @@ class CarPriceForm(forms.ModelForm):
 
 class UserForm(forms.ModelForm):
     class Meta:
+        model = User
+        fields = ['username', 'email', 'first_name', 'last_name']

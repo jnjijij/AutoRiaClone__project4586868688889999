@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from .models import Auto
+
 from .forms import AutoForm
+
 
 def create_auto(request):
     if request.method == 'POST':

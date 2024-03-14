@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import CustomUserListCreate, CustomUserRetrieveUpdateDestroy
+from views import CustomUserListCreate, CustomUserRetrieveUpdateDestroy
 
 urlpatterns = [
     path('', CustomUserListCreate.as_view(), name='user-list-create'),

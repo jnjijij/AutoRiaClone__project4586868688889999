@@ -1,9 +1,13 @@
+from models import Auto, Autosalon, Report
+from models import Image
 from django import forms
-from django.contrib.auth.models import User
-from .models import Auto, Autosalon, AutoImage, Report
-from .models import Image
+from models import AutoImage
 from django import forms
-from .models import AutoImage
+
+from models import Auto, Autosalon, Report
+from models import AutoImage
+from models import Image
+
 
 class AutoForm(forms.ModelForm):
     class Meta:

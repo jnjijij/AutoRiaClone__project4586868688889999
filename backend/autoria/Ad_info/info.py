@@ -1,11 +1,15 @@
 from flask import Flask, request, jsonify
-import requests
+from profanityfilter import ProfanityFilter
+from sqlalchemy.testing import db
+
+from backend.my_project.models import Car
 
 app = Flask(__name__)
 
 cars = [
-    
+
 ]
+
 
 def check_profanity(text):
     profanity_filter = ProfanityFilter()
@@ -72,12 +76,26 @@ def get_car_ads_info(car_id):
         'avg_price_by_region': avg_price_by_region
     })
 
+
 @app.route('/api/cars', methods=['POST'])
 def create_car():
+    data = request.json
+    if 'brand' not in data or 'model' not in data or 'year' not in data:
+        return jsonify({'error': 'Missing required fields'}), 400
+    new_car = {
+        'brand': data['brand'],
+        'model': data['model'],
+        'year': data['year'],
+        'color': data.get('color', 'N/A')
+    }
+    cars.append(new_car)
+
+    return jsonify({'message': 'Car created successfully', 'car': new_car}), 201
 
 
 @app.route('/api/cars', methods=['GET'])
 def get_cars():
+    return jsonify({'cars': cars})
 
 
 @app.route('/api/cars/<int:car_id>', methods=['PUT'])
@@ -86,9 +104,11 @@ def update_car(car_id):
 
     return edit_car(car_id, new_data)
 
+
 @app.route('/api/cars/<int:car_id>/ads_info', methods=['GET'])
 def get_car_ads_info_endpoint(car_id):
     return get_car_ads_info(car_id)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

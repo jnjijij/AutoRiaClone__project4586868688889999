@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import CarBrand, CarModel, CarPrice
+from models import CarBrand, CarModel, CarPrice
 
 class CarBrandSerializer(serializers.ModelSerializer):
     class Meta:

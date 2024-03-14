@@ -42,3 +42,25 @@ def report_delete(request, pk):
 def report_confirm_delete(request, pk):
     report = Report.objects.get(pk=pk)
     return render(request, 'reports/report_confirm_delete.html', {'report': report})
+
+
+class ReportListView:
+    @classmethod
+    def as_view(cls):
+        pass
+
+
+class ReportDetailView:
+    @classmethod
+    def as_view(cls):
+        pass
+
+
+class ReportDismissView:
+    @classmethod
+    def as_view(cls):
+        pass
+
+
+class ReportDeleteAllView:
+    pass

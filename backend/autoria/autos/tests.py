@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Auto
+from models import Auto
 
 class AutoModelTest(TestCase):
     @classmethod

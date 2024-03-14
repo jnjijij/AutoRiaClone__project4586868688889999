@@ -47,11 +47,17 @@ def get_car_by_id(car_id):
     return None
 
 @app.route('/api/cars', methods=['POST'])
-def create_car():
+def create_car(car_id=None):
+    new_data = request.json
+
+    return edit_car(car_id, new_data)
 
 
 @app.route('/api/cars', methods=['GET'])
-def get_cars():
+def get_cars(car_id=None):
+    new_data = request.json
+
+    return edit_car(car_id, new_data)
 
 
 @app.route('/api/cars/<int:car_id>', methods=['PUT'])

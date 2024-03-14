@@ -1,3 +1,11 @@
 Django==3.2.5
 djangorestframework==3.12.4
 django-cors-headers==3.7.0
+views~=0.3
+automium_web~=0.1.1
+serializers~=0.2.4
+python-dotenv~=1.0.1
+requests~=2.31.0
+Flask~=3.0.2
+profanityfilter~=2.0.6
+SQLAlchemy~=2.0.28

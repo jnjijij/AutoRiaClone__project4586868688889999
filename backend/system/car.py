@@ -7,7 +7,7 @@ def index(request):
     cars = Car.objects.all()
     return render(request, 'index.html', {'cars': cars})
 
-def get_car_by_id(request, car_id):
+def get_car_by_id(car_id):
     car = get_object_or_404(Car, pk=car_id)
     return JsonResponse(car.to_dict())
 
@@ -22,11 +22,11 @@ def edit_car(request, car_id):
         form = CarForm(instance=car)
     return render(request, 'edit_car.html', {'form': form})
 
-def get_car_ads_info(request, car_id):
+def get_car_ads_info(car_id):
     car = get_object_or_404(Car, pk=car_id)
     views_count = CarAdView.objects.filter(car_id=car_id).count()
     views_by_period = CarAdView.objects.filter(car_id=car_id).order_by('-timestamp')[:10]
-    avg_price_by_region = CarAd.objects.filter(car_id=car_id).values('region').annotate(avg_price=('price'))
+    avg_price_by_region = CarAd.objects.filter(car_id=car_id).values('region').annotate(avg_price='price')
     response_data = {
         'car': car.to_dict(),
         'views_count': views_count,

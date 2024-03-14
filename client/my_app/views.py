@@ -1,9 +1,10 @@
-from rest_framework import viewsets
-from rest_framework import viewsets
-from .models import CarBrand, CarModel, CarPrice
-from .serializers import CarBrandSerializer, CarModelSerializer, CarPriceSerializer
 from django.shortcuts import render
-from .models import Client
+from rest_framework import viewsets
+
+from models import CarBrand, CarModel, CarPrice
+from models import Client
+from serializers import CarBrandSerializer, CarModelSerializer, CarPriceSerializer
+
 
 class CarBrandViewSet(viewsets.ModelViewSet):
     queryset = CarBrand.objects.all()
@@ -23,4 +24,4 @@ def client_list(request):
 
 def client_detail(request, pk):
     client = Client.objects.get(id=pk)
-    return render(request, 'clients/client_detail.html', {'client': clien
+    return render(request, 'clients/client_detail.html', {'client': client})

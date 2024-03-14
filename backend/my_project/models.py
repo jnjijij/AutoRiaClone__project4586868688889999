@@ -1,6 +1,7 @@
 from django.db import models
 
 class Car(models.Model):
+    query = None
     objects = None
     brand = models.CharField(max_length=100)
     model = models.CharField(max_length=100)
