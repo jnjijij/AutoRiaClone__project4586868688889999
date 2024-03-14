@@ -1,14 +1,15 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import get_object_or_404
+from django.shortcuts import redirect
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import View
 
-from .models import Report, Auto
-from django.shortcuts import render, redirect
-from .models import AutoImage
-from .forms import AutoImageForm
-from django.shortcuts import render
+from .forms import AutoImage
 from .models import Auto
+from .models import AutoImage
+from .models import Report
+
 
 class ReportListView(View):
     @login_required(login_url=reverse_lazy('accounts:login'))
@@ -45,12 +46,12 @@ class ReportDeleteAllView(View):
 def auto_image_update(request, auto_pk, image_pk):
     auto_image = AutoImage.objects.get(pk=image_pk)
     if request.method == 'POST':
-        form = AutoImageForm(request.POST, request.FILES, instance=auto_image)
+        form = Auto(request.POST, request.FILES, instance=auto_image)
         if form.is_valid():
             form.save()
             return redirect('auto_images')
     else:
-        form = AutoImageForm(instance=auto_image)
+        form = Auto(instance=auto_image)
     return render(request, 'auto_image_update.html', {'form': form})
 
 def auto_image_delete(request, auto_pk, image_pk):

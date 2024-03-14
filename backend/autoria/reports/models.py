@@ -1,5 +1,6 @@
-from django.db.models import Model, CharField, IntegerField, DateField, TextField, ForeignKey, CASCADE, models
-from autos.models import Auto
+from models import Auto
+from django.db.models import models
+
 
 class Report(models.Model):
     AUTO_STATUS_CHOICES = (

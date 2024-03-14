@@ -1,7 +1,3 @@
-from models import Auto, Autosalon, Report
-from models import Image
-from django import forms
-from models import AutoImage
 from django import forms
 
 from models import Auto, Autosalon, Report
