@@ -3,6 +3,8 @@ from django.db import models
 from django.db.models import Avg, Sum
 from django.utils import timezone
 
+from backend.apps.core import db
+
 
 class CarMake(models.Model):
     name = models.CharField(max_length=100)
@@ -85,3 +87,22 @@ class CarListing(models.Model):
 
 class HttpResponseForbidden:
     pass
+
+
+class Region(db.Model):
+    id = db.Column()
+    name = db.Column()
+
+    def __repr__(self):
+        return f"<Region {self.name}>"
+
+
+class Listing(db.Model):
+    region_id = db.Column()
+    region = db.relationship('Region', backref=db.backref('listings', lazy=True))
+
+    class Listing(db.Model):
+        # ...
+
+        region_id = db.Column(db.Integer, db.ForeignKey('region.id'), nullable=False)
+        region = db.relationship('Region', backref=db.backref('listings', lazy=True))

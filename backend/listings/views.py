@@ -1,5 +1,9 @@
+from datetime import datetime
+
 from django.shortcuts import render, redirect, get_object_or_404
 from models import Listing
+
+from backend.apps.core import db
 from forms import ListingForm
 from models import CarListing
 from models import HttpResponseForbidden
@@ -43,3 +47,15 @@ def listing_details(request, listing_id):
         return render(request, 'listing_details_premium.html', context)
     else:
         return HttpResponseForbidden("You do not have permission to view this listing's details")
+
+class View(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    listing_id = db.Column(db.Integer, db.ForeignKey('listing.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+    listing = db.relationship('Listing', backref=db.backref('views', lazy=True))
+    user = db.relationship('User', backref=db.backref('views', lazy=True))
+
+    def __repr__(self):
+        return f"<View {self.listing_id} {self.user_id} {self.created_at}>"
