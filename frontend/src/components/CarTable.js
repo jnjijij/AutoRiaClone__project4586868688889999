@@ -26,3 +26,5 @@ const CarTable = ({ cars }) => {
     </Table>
   );
 };
+export default class CarTable {
+}

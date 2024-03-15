@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import CarFilter from './CarFilter';
 import CarForm from './CarForm';
@@ -8,10 +8,6 @@ import api from './api';
 const App = () => {
   const [cars, setCars] = useState([]);
   const [filter, setFilter] = useState({});
-
-  useEffect(() => {
-    fetchCars();
-  }, []);
 
   const fetchCars = async () => {
     const response = await api.get('/cars');
@@ -34,6 +30,10 @@ const App = () => {
       (filter.region ? car.region === filter.region : true)
     );
   });
+
+  useEffect(() => {
+    fetchCars();
+  }, []);
 
   return (
     <Container>

@@ -63,4 +63,6 @@ class ReportDismissView:
 
 
 class ReportDeleteAllView:
-    pass
+    @classmethod
+    def as_view(cls):
+        pass

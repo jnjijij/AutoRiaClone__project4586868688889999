@@ -37,3 +37,6 @@ const CarList = () => {
 };
 
 export default CarList;
+
+export class CarList {
+}

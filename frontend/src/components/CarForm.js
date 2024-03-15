@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+
+export class CarForm {
+}
+
 import { CarForm } from '../components/CarForm';
-import { CAR_FORM_PAGE } from '../constants';
-import { CARS_URL, AUTH_URL, REGISTER_URL, LOGIN_URL, LOGOUT_URL, USER_PROFILE_URL } from '../constants/urls';
 
 export const CarFormPage = () => {
   return (
