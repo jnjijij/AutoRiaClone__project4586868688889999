@@ -1,6 +1,9 @@
 import json
 
 from channels.generic.websocket import AsyncWebsocketConsumer
+from channels.routing import ProtocolTypeRouter, URLRouter
+from django.urls import path
+from . import consumers
 
 
 class ChatConsumer(AsyncWebsocketConsumer):
@@ -35,9 +38,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
         await self.send(text_data=json.dumps({
             'message': message
         }))
-        from channels.routing import ProtocolTypeRouter, URLRouter
-        from django.urls import path
-        from . import consumers
 
         application = ProtocolTypeRouter({
             'websocket': URLRouter([
