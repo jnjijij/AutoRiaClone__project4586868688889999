@@ -41,8 +41,8 @@ class AutoModelTest(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, '/autos/')
 
-    from django.test import TestCase
-    from .models import Auto
+
+
 
     class AutoModelTest(TestCase):
         @classmethod

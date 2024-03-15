@@ -1,18 +1,11 @@
 import json
 
 from channels.generic.websocket import AsyncWebsocketConsumer
-from channels.routing import ProtocolTypeRouter, URLRouter
-from django.urls import path
-from . import consumers
 
 
 class ChatConsumer(AsyncWebsocketConsumer):
-    def __init__(self, *args, **kwargs):
-        super().__init__(args, kwargs)
-        self.room_name = None
-
     async def connect(self):
-        self.room_name = 'chat'
+        self.room_name = "chat_room"
         await self.channel_layer.group_add(
             self.room_name,
             self.channel_name
@@ -33,8 +26,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             self.room_name,
             {
                 'type': 'chat_message',
-                'message': message
-            }
+                'message': message}
         )
 
     async def chat_message(self, event):
@@ -42,9 +34,3 @@ class ChatConsumer(AsyncWebsocketConsumer):
         await self.send(text_data=json.dumps({
             'message': message
         }))
-
-        application = ProtocolTypeRouter({
-            'websocket': URLRouter([
-                path('ws/chat/', consumers.ChatConsumer.as_asgi()),
-            ]),
-        })

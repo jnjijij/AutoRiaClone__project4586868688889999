@@ -1,4 +1,6 @@
 from django import forms
+from django.forms.utils import ErrorList
+
 
 class AutoPriceForm(forms.Form):
     def __init__(self, data=None, files=None, auto_id='id_%s', prefix=None,
