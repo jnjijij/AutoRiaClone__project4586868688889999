@@ -4,16 +4,22 @@ from flask import Flask, jsonify, request
 app = Flask(__name__)
 
 cars = [
-    {'brand': 'bmw', 'model': 'x5', 'category': 'economy', 'price': {'usd': 1000, 'eur': 800, 'uah': 20000}, 'currency': 'usd', 'user_id': 1},
-    {'brand': 'daewoo', 'model': 'lanos', 'category': 'mid-range', 'price': {'usd': 500, 'eur': 400, 'uah': 10000}, 'currency': 'usd', 'user_id': 2},
-    {'brand': 'bmw', 'model': 'x5', 'category': 'high-end', 'price': {'usd': 2000, 'eur': 1600, 'uah': 30000}, 'currency': 'usd', 'user_id': 3},
-    {'brand': 'daewoo', 'model': 'lanos', 'category': 'economy', 'price': {'usd': 1000, 'eur': 800, 'uah': 20000}, 'currency': 'usd', 'user_id': 4},
+    {'brand': 'bmw', 'model': 'x5', 'category': 'economy', 'price': {'usd': 1000, 'eur': 800, 'uah': 20000},
+     'currency': 'usd', 'user_id': 1},
+    {'brand': 'daewoo', 'model': 'lanos', 'category': 'mid-range', 'price': {'usd': 500, 'eur': 400, 'uah': 10000},
+     'currency': 'usd', 'user_id': 2},
+    {'brand': 'bmw', 'model': 'x5', 'category': 'high-end', 'price': {'usd': 2000, 'eur': 1600, 'uah': 30000},
+     'currency': 'usd', 'user_id': 3},
+    {'brand': 'daewoo', 'model': 'lanos', 'category': 'economy', 'price': {'usd': 1000, 'eur': 800, 'uah': 20000},
+     'currency': 'usd', 'user_id': 4},
 ]
+
 
 def check_profanity(text):
     url = "https://www.purgomalum.com/service/plain?text=" + text
     response = requests.get(url)
     return response.text != text
+
 
 @app.route('/api/cars', methods=['POST'])
 def create_car():
@@ -46,15 +52,18 @@ def create_car():
 
     return jsonify(car), 201
 
+
 @app.route('/api/cars', methods=['GET'])
 def get_cars():
     brand = request.args.get('brand')
     model = request.args.get('model')
     category = request.args.get('category')
 
-    filtered_cars = [car for car in cars if car['brand'] == brand and car['model'] == model and car['category'] == category]
+    filtered_cars = [car for car in cars if
+                     car['brand'] == brand and car['model'] == model and car['category'] == category]
 
     return jsonify(filtered_cars)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

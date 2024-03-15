@@ -25,4 +25,4 @@ class Auto:
 
 
 class AutoImage:
-    pass
+    objects = None

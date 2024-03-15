@@ -219,18 +219,21 @@ class ReportDetailView(DetailView):
     model = Report
     template_name = 'reports/report_detail.html'
 
+
+def post(request, *args, **kwargs):
+    report = get_object_or_404(Report, pk=kwargs['report_id'])
+    if request.user != report.user and request.user.is_authenticated and request.user.is_staff:
+        report.resolved = True
+        report.save()
+    return redirect('report_detail', pk=report.pk)
+
+
 class ReportResolveView(View):
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         report = get_object_or_404(Report, pk=kwargs['report_id'])
         return super().dispatch(request, *args, **kwargs)
 
-    def post(self, request, *args, **kwargs):
-        report = get_object_or_404(Report, pk=kwargs['report_id'])
-        if request.user != report.user and request.user.is_authenticated and request.user.is_staff:
-            report.resolved = True
-            report.save()
-        return redirect('report_detail', pk=report.pk)
 
 class ReportDismissView(View):
     @method_decorator(login_required)
@@ -244,6 +247,22 @@ class ReportDismissView(View):
             report.dismissed = True
             report.save()
         return redirect('report_detail', pk=report.pk)
+
+
+def get(request, pk):
+    auto = Auto.objects.get(pk=pk)
+    if auto is None:
+        return redirect('auto_list')
+    return render(request, 'autos/auto_confirm_delete.html', {'auto': auto})
+
+
+def post(request, pk):
+    auto = Auto.objects.get(pk=pk)
+    if auto is None:
+        return redirect('auto_list')
+    auto.delete()
+    return redirect('auto_list')
+
 
 class ReportDeleteAllView(View):
     @method_decorator(login_required)
@@ -259,18 +278,7 @@ class ReportDeleteAllView(View):
         return redirect('report_list', auto_id=auto.pk)
 
     class AutoDeleteView(View):
-        def get(self, request, pk):
-            auto = Auto.objects.get(pk=pk)
-            if auto is None:
-                return redirect('auto_list')
-            return render(request, 'autos/auto_confirm_delete.html', {'auto': auto})
-
-        def post(self, request, pk):
-            auto = Auto.objects.get(pk=pk)
-            if auto is None:
-                return redirect('auto_list')
-            auto.delete()
-            return redirect('auto_list')
+        pass
 
 
 def auto_image_create(request, auto_pk):
