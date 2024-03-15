@@ -1,7 +1,10 @@
-from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
+from django.shortcuts import render
 
-from backend.apps.autodealers.models import DealerForm, Dealer, Autosalon, Client
+from backend.apps.autodealers.models import DealerForm, Dealer, Autosalon, Client, Advertisement
+
+
 def index():
 
     pass
@@ -51,3 +54,10 @@ def client_list(request):
 def client_detail(request, pk):
     client = get_object_or_404(Client, pk=pk)
     return render(request, 'clients/client_detail.html', {'client': client})
+def index(request):
+    advertisements = Advertisement.objects.all()
+    return render(request, 'autosaloons/index.html', {'advertisements': advertisements})
+
+def detail(request, pk):
+    advertisement = Advertisement.objects.get(pk=pk)
+    return render(request, 'autosaloons/detail.html', {'advertisement': advertisement})

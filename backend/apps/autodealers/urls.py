@@ -13,4 +13,6 @@ urlpatterns = [
     path('autosalons/<int:pk>/', views.autosalon_detail, name='auto salon_detail'),
     path('clients/', views.client_list, name='client_list'),
     path('clients/<int:pk>/', views.client_detail, name='client_detail'),
+    path('', views.index, name='index'),
+    path('<int:pk>/', views.detail, name='detail'),
 ]

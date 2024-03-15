@@ -35,3 +35,7 @@ class User(AbstractUser):
     role = models.CharField(_('role'), max_length=20, choices=ROLES, default='buyer')
     account_type = models.CharField(_('account type'), max_length=10,
                                     choices=(('basic', 'Basic'), ('premium', 'Premium')), default='basic')
+
+
+class PremiumUser:
+    objects = None

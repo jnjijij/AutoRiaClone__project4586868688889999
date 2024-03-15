@@ -9,5 +9,21 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "http://your-domain.com",
+    "https://your-domain.com",
+]
+INSTALLED_APPS = [
+    # ...
+    'channels',
+    'cms',
+    'menus',
+    # ...
+]
+ASGI_APPLICATION = 'autoria_clone.routing.application'
+
+CMS_TEMPLATES = [
+    {
+        'BACKEND': 'cms.templates.django.DjangoTemplateBackend',
+        'APP_DIRS': True,
+        'DIRS': [],
+    },
 ]

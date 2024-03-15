@@ -9,3 +9,7 @@ class ExchangeRate(db.Model):
 
     def __repr__(self):
         return f"<ExchangeRate {self.currency} {self.rate} on {self.date}>"
+
+
+class Currency:
+    pass
