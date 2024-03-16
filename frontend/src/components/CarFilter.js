@@ -44,10 +44,18 @@ const CarFilter = ({ onFilter }) => {
 };
 
 const CarFilterPage = () => {
-  const dispatch = useDispatch();
+    function useDispatch() {
+        return undefined;
+    }
+
+    const dispatch = useDispatch();
 
   const handleFilter = (filter) => {
-    dispatch(setFilter(filter));
+      function setFilter(filter) {
+          return undefined;
+      }
+
+      dispatch(setFilter(filter));
   };
 
   return (
