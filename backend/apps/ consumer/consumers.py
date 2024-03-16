@@ -3,7 +3,7 @@ import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.routing import ProtocolTypeRouter, URLRouter
 from django.urls import path
-from . import consumers
+from models import consumers
 
 
 class ChatConsumer(AsyncWebsocketConsumer):
