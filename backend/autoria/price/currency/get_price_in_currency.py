@@ -1,6 +1,6 @@
 from textblob import TextBlob
 
-from backend.apps.core import db
+from backend.core import db
 from backend.autoria.price.models import ExchangeRate
 
 

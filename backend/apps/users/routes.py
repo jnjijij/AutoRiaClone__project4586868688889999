@@ -2,7 +2,7 @@ from flask import request, redirect, url_for
 from flask import current_user
 from frontend.system.cars_search import app
 from .models import User, ROLE_ADMIN
-from ..core import db
+from ...core import db
 
 
 @app.route("/change_role", methods=["POST"])

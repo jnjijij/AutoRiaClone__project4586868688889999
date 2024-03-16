@@ -1,5 +1,5 @@
 """
-WSGI config for web-services project.
+WSGI configs for web-services project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

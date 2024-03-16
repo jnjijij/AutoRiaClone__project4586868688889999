@@ -1,4 +1,4 @@
-from backend.config.settings import BASE_DIR
+from backend.configs.settings import BASE_DIR
 
 DATABASES = {
     'default': {

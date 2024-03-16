@@ -1,5 +1,5 @@
 """
-ASGI config for autoria343 project.
+ASGI configs for autoria343 project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

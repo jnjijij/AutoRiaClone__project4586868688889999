@@ -3,7 +3,7 @@ from django.db import models
 from django.db.models import Avg, Sum
 from django.utils import timezone
 
-from backend.apps.core import db
+from backend.core import db
 
 
 class CarMake(models.Model):

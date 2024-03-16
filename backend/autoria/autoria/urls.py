@@ -5,7 +5,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from backend.config.settings import BASE_DIR
+from backend.configs.settings import BASE_DIR
 
 urlpatterns = [
     path('admin/', admin.site.urls),

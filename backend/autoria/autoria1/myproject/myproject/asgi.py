@@ -1,5 +1,5 @@
 """
-ASGI config for web-services project.
+ASGI configs for web-services project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

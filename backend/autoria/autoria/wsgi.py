@@ -1,5 +1,5 @@
 """
-WSGI config for autoria343 project.
+WSGI configs for autoria343 project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

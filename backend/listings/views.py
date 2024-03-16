@@ -3,7 +3,7 @@ from datetime import datetime
 from django.shortcuts import render, redirect, get_object_or_404
 from models import Listing
 
-from backend.apps.core import db
+from backend.core import db
 from forms import ListingForm
 from models import CarListing
 from models import HttpResponseForbidden

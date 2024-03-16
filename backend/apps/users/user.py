@@ -2,7 +2,7 @@ from urllib import request
 
 from flask import redirect, url_for
 
-from backend.apps.core import db
+from backend.core import db
 from backend.apps.users.models import UserMixin, ROLE_ADMIN
 from flask import current_user
 

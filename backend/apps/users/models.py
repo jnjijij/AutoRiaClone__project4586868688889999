@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-from backend.apps.core import db
+from backend.core import db
 
 
 class CustomUser(AbstractUser):
@@ -18,7 +18,7 @@ class UserMixin:
 class User(UserMixin, db.Model):
     # ...
     query = None
-    role = db.Column(default="customer", server_default="customer", index=True,)
+    role = db.Column(default="customer", server_default="customer", index=True, )
     # ...
 
 

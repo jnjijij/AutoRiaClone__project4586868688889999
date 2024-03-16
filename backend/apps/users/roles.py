@@ -2,7 +2,7 @@ from functools import wraps
 from flask import abort, request, current_app, redirect, url_for
 from flask import current_user
 
-from backend.apps.core import db
+from backend.core import db
 from backend.apps.users import user
 from backend.apps.users.models import ROLE_ADMIN, User
 from frontend.system.cars_search import app
