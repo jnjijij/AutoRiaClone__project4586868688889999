@@ -1,12 +1,32 @@
-{% extends 'base.html' %}
-
-{% block content %}
-  <h1>Moderation List</h1>
-  <ul>
-    {% for moderation in moderations %}
-      <li><a href="{% url 'moderation_detail' pk=moderation.pk %}">{{ moderation }}</a></li>
-    {% empty %}
-      <li>No moderations yet.</li>
-    {% endfor %}
-  </ul>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moderation List</title>
+</head>
+<body>
+    <h1>Moderation List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.description }}</td>
+                    <td>
+                        <a href="{{ url_for('moderate', id=item.id) }}">Moderate</a>
+                    </td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
