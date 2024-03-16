@@ -106,3 +106,11 @@ class Listing(db.Model):
 
         region_id = db.Column(db.Integer, db.ForeignKey('region.id'), nullable=False)
         region = db.relationship('Region', backref=db.backref('listings', lazy=True))
+
+
+class Model:
+    pass
+
+
+class CharField:
+    pass
