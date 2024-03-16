@@ -1,13 +1,22 @@
-from djangochannelsrestframework.decorators import action
-from djangochannelsrestframework.generics import GenericAsyncAPIConsumer
-from djangochannelsrestframework.observer import model_observer
+from rest_framework.decorators import action
 
-from apps.cars.models import CarModel
-from apps.cars.serializers import CarSerializer
+from backend.listings.models import CarModel
+from backend.my_project.serializers import CarSerializer
+
+
+class GenericAsyncAPIConsumer:
+    pass
+
+
+def model_observer(CarModel, serializer_class):
+    pass
 
 
 class CarConsumer(GenericAsyncAPIConsumer):
     def __init__(self, *args, **kwargs):
+        self.channel_layer = None
+        self.channel_name = None
+        self.scope = None
         self.room_name = 'cars'
         super().__init__(*args, **kwargs)
 
@@ -30,3 +39,16 @@ class CarConsumer(GenericAsyncAPIConsumer):
     @action()
     async def subscribe_to_car_activity(self, request_id, **kwargs):
         await self.cars_activity.subscribe(request_id=request_id)
+
+    def close(self):
+        pass
+
+    def accept(self):
+        pass
+
+    def reply(self, data, action, request_id):
+        pass
+
+    @classmethod
+    def as_asgi(cls):
+        pass

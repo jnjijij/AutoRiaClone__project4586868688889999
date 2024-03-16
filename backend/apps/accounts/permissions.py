@@ -19,6 +19,7 @@ ROLES = (
     ('buyer', 'Buyer'),
 )
 
+
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         # Логіка створення звичайного користувача
@@ -27,6 +28,7 @@ class UserManager(BaseUserManager):
     def create_superuser(self, email, password, **extra_fields):
         # Логіка створення суперкористувача (адміністратора)
         pass
+
 
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
@@ -52,6 +54,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         # Логіка перевірки дозволів на модуль
         pass
 
+
 class PremiumUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='premium_user')
 
@@ -59,6 +62,7 @@ class PremiumUser(models.Model):
         super().save(*args, **kwargs)
         view_stats_permission = Permission.objects.get(codename='view_statistics')
         self.user.user_permissions.add(view_stats_permission)
+
 
 class Listing(models.Model):
     seller = models.ForeignKey(User, on_delete=models.CASCADE, related_name='listings')
@@ -83,6 +87,7 @@ class Listing(models.Model):
         self.full_clean()
         super().save(*args, **kwargs)
 
+
 class PremiumUserManager(models.Manager):
     def get_average_price(self, user, region=None):
         filters = Q(seller__premium_user__user=user)
@@ -106,14 +111,18 @@ class PremiumUserManager(models.Manager):
         filters = Q(seller__premium_user__user=user, created_at__gte=start_date)
         return self.filter(filters).aggregate(total_views=Sum('views'), listing_count=Count('id'))
 
+
 class Permissions:
     @staticmethod
     def add_custom_permissions():
         content_type = ContentType.objects.get_for_model(User)
-        Permission.objects.create(content_type=content_type, codename='view_statistics', name='Can view listing statistics')
+        Permission.objects.create(content_type=content_type, codename='view_statistics',
+                                  name='Can view listing statistics')
+
 
 def create_custom_permissions(sender, **kwargs):
     if kwargs.get('created', False):
         Permissions.add_custom_permissions()
+
 
 models.signals.post_migrate.connect(create_custom_permissions, sender=sender)

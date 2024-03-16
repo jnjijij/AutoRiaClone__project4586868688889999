@@ -1,6 +1,5 @@
-from django_filters import rest_framework as filters
+from warnings import filters
 
-from apps.cars.models import CarModel
 
 # CarModel.objects.filter(brand__icontains=)
 
