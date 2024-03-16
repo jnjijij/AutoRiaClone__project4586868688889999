@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Moderation List</h1>
+  <ul>
+    {% for moderation in moderations %}
+      <li><a href="{% url 'moderation_detail' pk=moderation.pk %}">{{ moderation }}</a></li>
+    {% empty %}
+      <li>No moderations yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

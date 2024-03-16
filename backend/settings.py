@@ -16,6 +16,8 @@ INSTALLED_APPS = [
     'channels',
     'cms',
     'menus',
+    "consumer",
+    'ad_info'
     # ...
 ]
 ASGI_APPLICATION = 'autoria_clone.routing.application'

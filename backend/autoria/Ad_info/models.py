@@ -18,3 +18,7 @@ def update_car(car_id):
     new_data = request.json
 
     return edit_car(car_id, new_data)
+
+
+class AdInfo:
+    objects = None

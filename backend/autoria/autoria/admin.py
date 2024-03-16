@@ -3,3 +3,7 @@ from .models import Auto, Image
 
 admin.site.register(Auto)
 admin.site.register(Image)
+
+
+def site():
+    return None
