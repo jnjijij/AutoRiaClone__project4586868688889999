@@ -2,11 +2,20 @@ from datetime import datetime
 
 from django.shortcuts import render, redirect, get_object_or_404
 from models import Listing
+from rest_framework import generics
+from rest_framework.permissions import IsAdminUserOrReadOnly, IsAuthenticatedOrReadOnly
+from .models import Listing, User, Role, Account
+from .permissions import IsAdminUserOrReadOnlyForListings
+
 
 from backend.core import db
 from forms import ListingForm
 from models import CarListing
 from models import HttpResponseForbidden
+
+from ..apps.auth.serializers import UserSerializer
+
+
 def create_listing(request):
     if request.method == 'POST':
         form = ListingForm(request.POST)
@@ -59,3 +68,58 @@ class View(db.Model):
 
     def __repr__(self):
         return f"<View {self.listing_id} {self.user_id} {self.created_at}>"
+
+
+class ListingSerializer:
+    pass
+
+
+class ListingListCreateView(generics.ListCreateAPIView):
+    queryset = Listing.objects.all()
+    serializer_class = ListingSerializer
+    permission_classes = [IsAdminUserOrReadOnly]
+
+class ListingRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Listing.objects.all()
+    serializer_class = ListingSerializer
+    permission_classes = [IsAdminUserOrReadOnlyForListings]
+
+class UserListCreateView(generics.ListCreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [IsAdminUserOrReadOnly]
+
+class UserRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [IsAdminUserOrReadOnlyForListings]
+
+
+class RoleSerializer:
+    pass
+
+
+class RoleListCreateView(generics.ListCreateAPIView):
+    queryset = Role.objects.all()
+    serializer_class = RoleSerializer
+    permission_classes = [IsAdminUserOrReadOnly]
+
+class RoleRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Role.objects.all()
+    serializer_class = RoleSerializer
+    permission_classes = [IsAdminUserOrReadOnlyForListings]
+
+
+class AccountSerializer:
+    pass
+
+
+class AccountListCreateView(generics.ListCreateAPIView):
+    queryset = Account.objects.all()
+    serializer_class = AccountSerializer
+    permission_classes = [IsAdminUserOrReadOnly]
+
+class AccountRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Account.objects.all()
+    serializer_class = AccountSerializer
+    permission_classes = [IsAdminUserOrReadOnlyForListings]

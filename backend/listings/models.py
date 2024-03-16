@@ -114,3 +114,15 @@ class Model:
 
 class CharField:
     pass
+
+
+class User:
+    objects = None
+
+
+class Role:
+    objects = None
+
+
+class Account:
+    objects = None
