@@ -16,3 +16,8 @@ class Park(models.Model):
 
     def get_absolute_url(self):
         return reverse('park-detail', args=[str(self.id)])
+
+
+class CarPark:
+    DoesNotExist = None
+    objects = None

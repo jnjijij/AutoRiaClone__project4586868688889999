@@ -34,3 +34,10 @@ class ParkSerializer(serializers.ModelSerializer):
         serializer = ParkSerializer(data=data)
         serializer.is_valid()
         park = serializer.save()
+
+
+class CarParkSerializer:
+    def __init__(self):
+        self.data = None
+
+    pass
