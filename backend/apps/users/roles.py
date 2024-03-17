@@ -1,7 +1,9 @@
 from functools import wraps
 from flask import abort, request, current_app, redirect, url_for
 from flask import current_user
-
+from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import Group
+from backend.configs import models
 from backend.core import db
 from backend.apps.users import user
 from backend.apps.users.models import ROLE_ADMIN, User
@@ -28,6 +30,8 @@ def role_required(role):
         return wrapper
 
     return decorator
+
+
 def role_required(role):
     def decorator(f):
         @wraps(f)
@@ -42,7 +46,7 @@ def role_required(role):
             @app.route("/admin")
             @role_required(ROLE_ADMIN)
             def admin():
-             return f(*args, **kwargs)
+                return f(*args, **kwargs)
 
         return wrapper
 
@@ -70,3 +74,19 @@ def change_role():
     db.session.commit()
 
     return redirect(url_for("admin"))
+
+
+class User(AbstractUser):
+    ROLES = [
+        ('customer', 'Customer'),
+        ('seller', 'Seller'),
+        ('manager', 'Manager'),
+        ('admin', 'Admin'),
+        ('sales', 'Sales'),
+        ('mechanic', 'Mechanic'),
+        ('partner', 'Partner'),
+    ]
+    role = models.CharField(max_length=10, choices=ROLES, default='customer')
+
+
+Group.objects.create(name='sellers')

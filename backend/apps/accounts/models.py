@@ -102,3 +102,15 @@ class PremiumUserManager(models.Manager):
 
         filters = Q(seller__premium_user__user=user, created_at__gte=start_date)
         return self.filter(filters).aggregate(total_views=Sum('views'), listing_count=Count('id'))
+
+from django.db import models
+from django.contrib.auth.models import User
+
+class PremiumAccount(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    expires_at = models.DateTimeField()
+
+class Purchase(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    premium_account = models.OneToOneField(PremiumAccount, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)

@@ -23,3 +23,19 @@ class Message(models.Model):
     def __str__(self):
         # Return the message.
         return self.message
+
+
+class Model:
+    pass
+
+
+class ForeignKey:
+    pass
+
+
+class TextField:
+    pass
+
+
+class DateTimeField:
+    pass

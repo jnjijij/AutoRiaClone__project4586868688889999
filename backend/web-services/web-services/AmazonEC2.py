@@ -22,3 +22,14 @@ instance.start()
 instance.wait_until_running()
 
 print(instance.public_dns_name)
+
+def launch_instance():
+    instances = ec2.create_instances(
+        ImageId='ami-0c94855ba95c574c8',
+        MinCount=1,
+        MaxCount=1,
+        InstanceType='t2.micro',
+        KeyName='my-key-pair',
+        SecurityGroupIds=['my-security-group'],
+    )
+    return instances[0]
