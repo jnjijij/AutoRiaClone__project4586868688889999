@@ -1,6 +1,8 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.contrib.auth.models import Group
+
+from backend.apps.accounts.models import ROLES
 from backend.core import db
 
 
@@ -55,3 +57,14 @@ class PartnerRole(UserRole):
 
 Group.objects.create(name='Basic')
 Group.objects.create(name='Premium')
+
+class Role(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    type = models.CharField(max_length=10, choices=ROLES)
+
+ROLES = (
+    ('customer', 'Покупець'),
+    ('seller', 'Продавець'),
+    ('manager', 'Менеджер'),
+    ('admin', 'Адміністратор'),
+)

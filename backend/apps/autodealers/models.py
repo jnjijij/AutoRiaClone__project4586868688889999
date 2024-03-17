@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from backend.listings.models import Role
+
+
 class MotorshowDealer(models.Model):
     address = models.CharField(max_length=200)
     name = models.CharField(max_length=155)
@@ -45,3 +48,11 @@ class Advertisement(models.Model):
 
 class Autosaloon:
     pass
+
+class CarDealer(models.Model):
+    name = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
+    manager = models.ForeignKey(Role, on_delete=models.CASCADE, related_name='car_dealer_manager')
+    admin = models.ForeignKey(Role, on_delete=models.CASCADE, related_name='car_dealer_admin')
+    sales = models.ManyToManyField(Role, related_name='car_dealer_sales')
+    mechanics = models.ManyToManyField(Role, related_name='car_dealer_mechanics')

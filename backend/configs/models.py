@@ -28,3 +28,15 @@ class Model:
 
 class DateTimeField:
     pass
+
+
+class CharField:
+    pass
+
+
+class DecimalField:
+    pass
+
+
+class DateField:
+    pass
