@@ -9,3 +9,5 @@ bucket.create()
 # Upload a file
 data = open("my-file.txt", "rb")
 s3.Bucket("my-new-bucket").put_object(Key="my-file.txt", Body=data)
+s3 = boto3.client('s3')
+s3.upload_file('path/to/local/file', 'your-bucket-name', 'path/to/s3/file')

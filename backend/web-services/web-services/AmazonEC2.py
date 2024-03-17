@@ -10,10 +10,15 @@ instances = ec2.create_instances(
     InstanceType="t2.micro",
     KeyName="my-key-pair",
     SecurityGroupIds=["sg-xxxxxxxx"],
+    Filters=[{'Name': 'tag:Name', 'Values': ['your-instance-name']}]
 )
 
 instance = instances[0]
 instance.wait_until_running()
 instance.reload()
+instance.stop()
+instance.wait_until_stopped()
+instance.start()
+instance.wait_until_running()
 
 print(instance.public_dns_name)

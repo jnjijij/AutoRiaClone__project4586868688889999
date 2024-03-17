@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Car(models.Model):
     objects = None
     name = models.CharField(max_length=200)
@@ -31,4 +32,4 @@ def Ad():
 
 
 class CarListing:
-    objects = None
+    pass

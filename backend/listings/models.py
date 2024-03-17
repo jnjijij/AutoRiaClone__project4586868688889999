@@ -132,3 +132,13 @@ class CarListing(models.Model):
     model = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     currency = models.CharField(max_length=3)
+class Currency(models.Model):
+    name = models.CharField(max_length=50)
+    code = models.CharField(max_length=3)
+
+class Ad(models.Model):
+    objects = None
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    currency = models.ForeignKey(Currency, on_delete=models.SET_NULL, null=True)

@@ -2,9 +2,9 @@ from datetime import datetime
 
 from django.shortcuts import render, redirect, get_object_or_404
 from models import Listing
-from rest_framework import generics
+from rest_framework import generics, viewsets
 from rest_framework.permissions import IsAdminUserOrReadOnly, IsAuthenticatedOrReadOnly
-from .models import Listing, User, Role, Account
+from .models import Listing, User, Role, Account, Ad
 from .permissions import IsAdminUserOrReadOnlyForListings
 
 
@@ -13,6 +13,7 @@ from forms import ListingForm
 from models import CarListing
 from models import HttpResponseForbidden
 
+from .serializers import AdSerializer
 from ..apps.auth.serializers import UserSerializer
 
 
@@ -123,3 +124,6 @@ class AccountRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
     permission_classes = [IsAdminUserOrReadOnlyForListings]
+class AdViewSet(viewsets.ModelViewSet):
+    queryset = Ad.objects.all()
+    serializer_class = AdSerializer

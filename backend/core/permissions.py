@@ -25,3 +25,7 @@ def core_details(request, pk):
 
     serializer = CarParkSerializer(car_park)
     return Response(serializer.data)
+
+
+class BasePermission:
+    pass

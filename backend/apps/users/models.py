@@ -37,5 +37,21 @@ class AbstractUser(AbstractUser):
     role = models.CharField(max_length=1, choices=ROLE_CHOICES, default='C')
 
 
+class UserRole(models.Model):
+    name = models.CharField(max_length=50)
+
+
+class SalesRole(UserRole):
+    objects = None
+
+
+class MechanicRole(UserRole):
+    objects = None
+
+
+class PartnerRole(UserRole):
+    objects = None
+
+
 Group.objects.create(name='Basic')
 Group.objects.create(name='Premium')
