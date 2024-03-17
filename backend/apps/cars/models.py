@@ -32,7 +32,7 @@ def Ad():
 
 
 class CarListing:
-    pass
+    objects = None
 
 class Car(models.Model):
     brand = models.CharField(max_length=50)

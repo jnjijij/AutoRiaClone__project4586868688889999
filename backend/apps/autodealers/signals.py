@@ -15,7 +15,7 @@ def create_autosaloon_manager(instance, created):
 
 
 @receiver(post_save, sender=Advertisement)
-def update_advertisement_price(instance, created, exchange_rate=None, **kwargs):
+def update_advertisement_price(instance, created, exchange_rate=None):
     if created or instance.price.currency != 'UAH':
         instance.price = Money(instance.price.amount * exchange_rate, 'UAH')
         instance.save()

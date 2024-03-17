@@ -37,7 +37,7 @@ def update(request, dealer_id):
 def delete(dealer_id):
     dealer = get_object_or_404(Dealer, pk=dealer_id)
     dealer.delete()
-    return HttpResponseRedirect('/success-url/')  # Replace with the actual URL
+    return HttpResponseRedirect('/success-url/')
 
 def autosalon_list(request):
     autosalons = Autosalon.objects.all()

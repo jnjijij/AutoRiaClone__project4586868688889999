@@ -6,8 +6,6 @@ from django.db import models
 from django.db.models import Avg, Count, Q, Sum
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-from django.db import models
-from django.contrib.auth.models import User
 
 from backend.models import Advertisement
 

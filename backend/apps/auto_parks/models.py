@@ -11,6 +11,10 @@ class Park(models.Model):
     country = models.CharField(max_length=100)
     description = models.TextField()
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(args, kwargs)
+        self.id = None
+
     def __str__(self):
         return self.name
 
