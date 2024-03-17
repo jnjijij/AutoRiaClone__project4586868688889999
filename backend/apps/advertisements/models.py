@@ -30,5 +30,16 @@ class AdvertisementStatistics(models.Model):
     monthly_views = models.IntegerField(default=0)
     regional_price = models.DecimalField(max_digits=10, decimal_places=2)
     national_price = models.DecimalField(max_digits=10, decimal_places=2)
+class CarBrand(models.Model):
+    name = models.CharField(max_length=100)
 
+class CarModel(models.Model):
+    brand = models.ForeignKey(CarBrand, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+
+class Advertisement(models.Model):
+    ...
+    brand = models.ForeignKey(CarBrand, on_delete=models.CASCADE)
+    model = models.ForeignKey(CarModel, on_delete=models.CASCADE)
+    ...
     

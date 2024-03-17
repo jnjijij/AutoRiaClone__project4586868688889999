@@ -109,11 +109,14 @@ class PremiumUserManager(models.Manager):
 class PremiumAccount(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     expires_at = models.DateTimeField()
+    price = models.DecimalField(max_digits=100, decimal_places=2)
+
 
 class Purchase(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     premium_account = models.OneToOneField(PremiumAccount, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+
 
 class Account(models.Model):
     TYPES = (
@@ -122,3 +125,12 @@ class Account(models.Model):
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     type = models.CharField(max_length=10, choices=TYPES)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+class PremiumAccount(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    purchase_date = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    premium_account = models.OneToOneField()
+
