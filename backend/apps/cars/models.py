@@ -28,3 +28,7 @@ class User:
 
 def Ad():
     return None
+
+
+class CarListing:
+    objects = None
