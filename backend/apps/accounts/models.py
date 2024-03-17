@@ -8,6 +8,9 @@ from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.db import models
 from django.contrib.auth.models import User
+
+from backend.models import Advertisement
+
 # Визначення ролей
 ROLES = (
     ('admin', 'Admin'),
@@ -133,4 +136,33 @@ class PremiumAccount(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     premium_account = models.OneToOneField()
+class Statistic(models.Model):
+    advertisement = models.ForeignKey(Advertisement, on_delete=models.CASCADE)
+    views_total = models.IntegerField(default=0)
+    views_daily = models.IntegerField(default=0)
+    views_weekly = models.IntegerField(default=0)
+    views_monthly = models.IntegerField(default=0)
+    average_price_region = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    average_price_ukraine = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
 
+    def update_views(self):
+        self.views_total += 1
+        self.save()
+
+    def update_daily_views(self):
+        self.views_daily += 1
+        self.save()
+
+    def update_weekly_views(self):
+        self.views_weekly += 1
+        self.save()
+
+    def update_monthly_views(self):
+        self.views_monthly += 1
+        self.save()
+
+    def update_average_price(self):
+        region = self.advertisement.region
+        self.average_price_region = Advertisement.objects.filter(region=region).aggregate(Avg('price'))['price__avg']
+        self.average_price_ukraine = Advertisement.objects.aggregate(Avg('price'))['price__avg']
+        self.save()

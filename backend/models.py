@@ -16,6 +16,7 @@ class CarModel(models.Model):
     name = models.CharField(max_length=100)
 
 class Advertisement(models.Model):
+    objects = None
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     brand = models.ForeignKey(CarBrand, on_delete=models.CASCADE)
     model = models.ForeignKey(CarModel, on_delete=models.CASCADE)
