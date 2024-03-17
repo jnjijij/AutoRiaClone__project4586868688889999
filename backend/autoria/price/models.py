@@ -13,3 +13,8 @@ class ExchangeRate(db.Model):
 
 class Currency:
     pass
+
+
+class Car:
+    DoesNotExist = None
+    objects = None

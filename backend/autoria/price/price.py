@@ -1,7 +1,9 @@
 import requests
-from flask import Flask, jsonify, request
+from django.http import JsonResponse
+from django.views.decorators.http import require_http_methods
+from django.views.decorators.csrf import csrf_exempt
 
-app = Flask(__name__)
+from django.http import HttpResponse
 
 cars = [
     {'brand': 'bmw', 'model': 'x5', 'category': 'economy', 'price': {'usd': 1000, 'eur': 800, 'uah': 20000},
@@ -21,23 +23,24 @@ def check_profanity(text):
     return response.text != text
 
 
-@app.route('/api/cars', methods=['POST'])
-def create_car():
-    brand = request.json['brand']
-    model = request.json['model']
-    category = request.json['category']
-    price = request.json['price']
-    currency = request.json['currency']
-    user_id = request.json['user_id']
+@csrf_exempt
+@require_http_methods(['POST'])
+def create_car(request):
+    brand = request.POST.get('brand')
+    model = request.POST.get('model')
+    category = request.POST.get('category')
+    price = request.POST.get('price')
+    currency = request.POST.get('currency')
+    user_id = request.POST.get('user_id')
 
     if check_profanity(brand) or check_profanity(model) or check_profanity(category):
-        return jsonify({'error': 'Profanity detected'}), 400
+        return JsonResponse({'error': 'Profanity detected'}, status=400)
 
-    if price['usd'] is None or price['eur'] is None or price['uah'] is None:
-        return jsonify({'error': 'Price in all currencies is required'}), 400
+    if not all([price['usd'], price['eur'], price['uah']]):
+        return JsonResponse({'error': 'Price in all currencies is required'}, status=400)
 
     if currency not in ['usd', 'eur', 'uah']:
-        return jsonify({'error': 'Invalid currency'}), 400
+        return JsonResponse({'error': 'Invalid currency'}, status=400)
 
     car = {
         'brand': brand,
@@ -50,20 +53,21 @@ def create_car():
 
     cars.append(car)
 
-    return jsonify(car), 201
+    return JsonResponse(car, status=201)
 
 
-@app.route('/api/cars', methods=['GET'])
-def get_cars():
-    brand = request.args.get('brand')
-    model = request.args.get('model')
-    category = request.args.get('category')
+@csrf_exempt
+@require_http_methods(['GET'])
+def get_cars(request):
+    brand = request.GET.get('brand')
+    model = request.GET.get('model')
+    category = request.GET.get('category')
 
     filtered_cars = [car for car in cars if
                      car['brand'] == brand and car['model'] == model and car['category'] == category]
 
-    return jsonify(filtered_cars)
+    return JsonResponse(filtered_cars, safe=False)
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+def index(request):
+    return HttpResponse("Hello, World!")

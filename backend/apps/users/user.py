@@ -1,10 +1,12 @@
 from urllib import request
 
-from flask import redirect, url_for
+from django.shortcuts import redirect
+from sqlalchemy.sql.functions import current_user
 
+from backend.apps.users.routes import url_for
 from backend.core import db
 from backend.apps.users.models import UserMixin, ROLE_ADMIN
-from flask import current_user
+
 
 from frontend.system.cars_search import app
 

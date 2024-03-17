@@ -1,8 +1,15 @@
 from functools import wraps
-from flask import abort, request, current_app, redirect, url_for
-from flask import current_user
+from os import abort
+
+from celery import current_app
+from django.shortcuts import redirect
+
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import Group
+from rest_framework import request
+from sqlalchemy.sql.functions import current_user
+
+from backend.apps.users.routes import url_for
 from backend.configs import models
 from backend.core import db
 from backend.apps.users import user

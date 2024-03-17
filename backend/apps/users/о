@@ -1,15 +1,8 @@
-from urllib import request
-
-from django.shortcuts import redirect
-from sqlalchemy.sql.functions import current_user
-
+from flask import request, redirect, url_for
+from flask import current_user
 from frontend.system.cars_search import app
 from .models import User, ROLE_ADMIN
 from ...core import db
-
-
-def url_for(param):
-    pass
 
 
 @app.route("/change_role", methods=["POST"])

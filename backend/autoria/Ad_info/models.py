@@ -1,6 +1,6 @@
 from urllib import request
 
-from flask import jsonify
+from celery.utils.serialization import jsonify
 
 from backend.autoria.Ad_info.info import check_profanity, edit_car
 from frontend.system.cars_search import app

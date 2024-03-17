@@ -1,7 +1,9 @@
-from flask import Response
+
 from rest_framework import generics
 from rest_framework.permissions import IsAdminUserOrReadOnlyForListings
 from rest_framework.exceptions import PermissionDenied
+from rest_framework.response import Response
+
 from .models import Listing
 from .serializers import ListingSerializer
 
