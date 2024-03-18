@@ -51,3 +51,7 @@ def create_advertisement(user, LIMIT_BASIC_ACCOUNT=None, **kwargs):
 class PremiumAccount(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     purchase_date = models.DateTimeField(auto_now_add=True)
+
+class PremiumAccount(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    purchase_date = models.DateTimeField(auto_now_add=True)
