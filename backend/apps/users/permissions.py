@@ -1,7 +1,7 @@
 from backend.core import permissions
 
 
-def has_permission(request, view):
+def has_permission(request):
     if request.user.is_authenticated and request.user.is_staff:
         return True
     return False
