@@ -3,10 +3,8 @@ from djangochannelsrestframework.decorators import action
 from djangochannelsrestframework.generics import GenericAsyncAPIConsumer
 
 
-
-
 class ChatModel:
-    pass
+    objects = None
 
 
 class ChatConsumer(GenericAsyncAPIConsumer):
