@@ -2,7 +2,11 @@ from channels.db import database_sync_to_async
 from djangochannelsrestframework.decorators import action
 from djangochannelsrestframework.generics import GenericAsyncAPIConsumer
 
-from apps.chat.models import ChatModel
+
+
+
+class ChatModel:
+    pass
 
 
 class ChatConsumer(GenericAsyncAPIConsumer):
