@@ -4,7 +4,7 @@ from rest_framework import status
 from rest_framework.reverse import reverse
 from rest_framework.test import APITestCase
 
-from apps.cars.models import CarModel
+from backend.models import CarModel
 
 UserModel = get_user_model()
 
