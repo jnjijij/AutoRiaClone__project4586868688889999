@@ -12,6 +12,7 @@ class CarBrand(models.Model):
     name = models.CharField(max_length=100)
 
 class CarModel(models.Model):
+    objects = None
     brand = models.ForeignKey(CarBrand, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
 
