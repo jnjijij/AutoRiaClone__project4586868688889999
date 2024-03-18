@@ -1,18 +1,16 @@
 from datetime import datetime
 
 from django.shortcuts import render, redirect, get_object_or_404
+from models import CarListing
+from models import HttpResponseForbidden
 from models import Listing
 from rest_framework import generics, viewsets
-from rest_framework.permissions import IsAdminUserOrReadOnly, IsAuthenticatedOrReadOnly
-from .models import Listing, User, Role, Account, Ad
-from .permissions import IsAdminUserOrReadOnlyForListings
-
+from rest_framework.permissions import IsAdminUserOrReadOnly
 
 from backend.core import db
 from forms import ListingForm
-from models import CarListing
-from models import HttpResponseForbidden
-
+from .models import Listing, User, Role, Account, Ad
+from .permissions import IsAdminUserOrReadOnlyForListings
 from .serializers import AdSerializer
 from ..apps.auth.serializers import UserSerializer
 
