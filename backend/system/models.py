@@ -8,3 +8,7 @@ class CarAd:
 
 class CarAdView:
     objects = None
+
+
+class UserProfile:
+    objects = None
