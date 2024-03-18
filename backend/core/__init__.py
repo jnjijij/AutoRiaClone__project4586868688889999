@@ -1,1 +1,2 @@
-
+def db():
+    return None
