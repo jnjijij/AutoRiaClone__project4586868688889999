@@ -7,3 +7,7 @@ class ChatConfig(AppConfig):
 
 def chat():
     return None
+
+
+def chat():
+    return None
