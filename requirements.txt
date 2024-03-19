@@ -24,16 +24,16 @@ daphne==4.1.0
 databases==0.9.0
 db==0.1.1
 dealer==2.1.0
-Django==3.2.5
+Django==4.2.10
 django-classy-tags==4.1.0
 django-cms==4.1.0
-django-cors-headers==3.7.0
+django-cors-headers==4.3.1
 django-crispy-forms==2.1
 django-formtools==2.5.1
 django-sekizai==4.1.0
 django-treebeard==4.7.1
 djangocms-admin-style==3.3.1
-djangorestframework==3.12.4
+djangorestframework==3.14.0
 ec2==0.4.0
 firewall==0.2.0
 Flask==3.0.2
@@ -65,7 +65,7 @@ pyasn1==0.5.1
 pyasn1-modules==0.3.0
 pycparser==2.21
 pyOpenSSL==24.1.0
-python-dateutil==2.9.0.post0
+
 python-dotenv==1.0.1
 pytz==2024.1
 redis==5.0.3
@@ -92,7 +92,7 @@ views==0.3
 Werkzeug==3.0.1
 zope.interface==6.2
 
-pip~=23.2.1
+pip~=24.0
 sender~=0.3
 status~=0.2.5
 pytest~=8.1.1
@@ -114,7 +114,7 @@ click==8.1.7 ; python_version >= "3.11" and python_version < "4.0"
 colorama==0.4.6 ; python_version >= "3.11" and python_version < "4.0" and platform_system == "Windows"
 constantly==23.10.4 ; python_version >= "3.11" and python_version < "4.0"
 cron-descriptor==1.4.3 ; python_version >= "3.11" and python_version < "4.0"
-cryptography==42.0.3 ; python_version >= "3.11" and python_version < "4.0"
+cryptography==42.0.5 ; python_version >= "3.11" and python_version < "4.0"
 daphne==4.1.0 ; python_version >= "3.11" and python_version < "4.0"
 django-celery-beat==2.5.0 ; python_version >= "3.11" and python_version < "4.0"
 django-celery-results==2.5.1 ; python_version >= "3.11" and python_version < "4.0"
@@ -133,28 +133,28 @@ inflection==0.5.1 ; python_version >= "3.11" and python_version < "4.0"
 kombu==5.3.5 ; python_version >= "3.11" and python_version < "4.0"
 msgpack==1.0.7 ; python_version >= "3.11" and python_version < "4.0"
 mysqlclient==2.2.3 ; python_version >= "3.11" and python_version < "4.0"
-packaging==23.2 ; python_version >= "3.11" and python_version < "4.0"
+packaging==24.0 ; python_version >= "3.11" and python_version < "4.0"
 pillow==10.2.0 ; python_version >= "3.11" and python_version < "4.0"
 prompt-toolkit==3.0.43 ; python_version >= "3.11" and python_version < "4.0"
 pyasn1-modules==0.3.0 ; python_version >= "3.11" and python_version < "4.0"
 pyasn1==0.5.1 ; python_version >= "3.11" and python_version < "4.0"
 pycparser==2.21 ; python_version >= "3.11" and python_version < "4.0" and platform_python_implementation != "PyPy"
 pyjwt==2.8.0 ; python_version >= "3.11" and python_version < "4.0"
-pyopenssl==24.0.0 ; python_version >= "3.11" and python_version < "4.0"
+pyopenssl==24.1.0 ; python_version >= "3.11" and python_version < "4.0"
 python-crontab==3.0.0 ; python_version >= "3.11" and python_version < "4.0"
-python-dateutil==2.8.2 ; python_version >= "3.11" and python_version < "4.0"
+python-dateutil==2.9.0.post0 ; python_version >= "3.11" and python_version < "4.0"
 pytz==2024.1 ; python_version >= "3.11" and python_version < "4.0"
 pyyaml==6.0.1 ; python_version >= "3.11" and python_version < "4.0"
-redis==5.0.1 ; python_version >= "3.11" and python_version < "4.0"
+redis==5.0.3 ; python_version >= "3.11" and python_version < "4.0"
 service-identity==24.1.0 ; python_version >= "3.11" and python_version < "4.0"
-setuptools==69.1.0 ; python_version >= "3.11" and python_version < "4.0"
+setuptools==69.1.1 ; python_version >= "3.11" and python_version < "4.0"
 six==1.16.0 ; python_version >= "3.11" and python_version < "4.0"
 sqlparse==0.4.4 ; python_version >= "3.11" and python_version < "4.0"
 twisted-iocpsupport==1.0.4 ; python_version >= "3.11" and python_version < "4.0" and platform_system == "Windows"
-twisted[tls]==23.10.0 ; python_version >= "3.11" and python_version < "4.0"
+
 txaio==23.1.1 ; python_version >= "3.11" and python_version < "4.0"
-typing-extensions==4.9.0 ; python_version >= "3.11" and python_version < "4.0"
-tzdata==2023.4 ; python_version >= "3.11" and python_version < "4.0"
+typing-extensions==4.10.0 ; python_version >= "3.11" and python_version < "4.0"
+tzdata==2024.1 ; python_version >= "3.11" and python_version < "4.0"
 uritemplate==4.1.1 ; python_version >= "3.11" and python_version < "4.0"
 vine==5.1.0 ; python_version >= "3.11" and python_version < "4.0"
 wcwidth==0.2.13 ; python_version >= "3.11" and python_version < "4.0"
