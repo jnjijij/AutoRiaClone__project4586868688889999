@@ -1,4 +1,4 @@
-from .settings import *
+from backend.configs.extra_conf import settings
 
 # Local settings
 
