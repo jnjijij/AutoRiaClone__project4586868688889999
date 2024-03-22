@@ -1,4 +1,4 @@
-rom django import forms
+from django import forms
 from models import Car
 
 class CarForm(forms.ModelForm):
