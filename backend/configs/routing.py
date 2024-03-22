@@ -7,3 +7,7 @@ application = ProtocolTypeRouter({
         path('ws/chat/', consumers.ChatConsumer.as_asgi()),
     ]),
 })
+
+
+def websocket_urlpatterns():
+    return None
