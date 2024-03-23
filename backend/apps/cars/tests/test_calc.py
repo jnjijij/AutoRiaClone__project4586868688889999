@@ -1,6 +1,8 @@
 from unittest import TestCase
 
-from apps.cars.services import calc
+
+def calc(param, param1, param2):
+    pass
 
 
 class CalcTestCase(TestCase):
