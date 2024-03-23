@@ -1,5 +1,7 @@
-import core.services.file_service
+
 from django.db import migrations, models
+
+from backend import core
 
 
 class Migration(migrations.Migration):
@@ -14,4 +16,5 @@ class Migration(migrations.Migration):
             name='photo',
             field=models.ImageField(blank=True, upload_to=core.services.file_service.FileService.upload_car_photo),
         ),
+    ]
     ]
