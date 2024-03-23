@@ -1,7 +1,7 @@
 from channels.db import database_sync_to_async
 from channels.middleware import BaseMiddleware
 
-from core.services.jwt_service import JWTService, SocketToken
+from backend.core.services.jwt_service import SocketToken, JWTService
 
 
 @database_sync_to_async
