@@ -1,7 +1,7 @@
 import os
 from uuid import uuid1
 
-from core.dataclasses.user_dataclass import ProfileDataClass
+from backend.core.dataclasses.user_dataclass import ProfileDataClass
 
 
 class FileService:
@@ -14,3 +14,4 @@ class FileService:
     def upload_car_photo(instance, file: str):
         ext = file.split('.')[-1]
         return os.path.join('cars_photo', f'{uuid1()}.{ext}')
+
