@@ -3,6 +3,7 @@
 from django.db import models
 
 class UserProfile(models.Model):
+    objects = None
     user = models.OneToOneField(
         'auth.User', on_delete=models.CASCADE, related_name='profile')
     bio = models.TextField(blank=True)
