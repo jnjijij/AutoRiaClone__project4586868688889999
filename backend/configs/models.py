@@ -40,3 +40,7 @@ class DecimalField:
 
 class DateField:
     pass
+
+
+class ExpressionWrapper:
+    pass
