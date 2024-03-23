@@ -1,7 +1,7 @@
 from rest_framework.permissions import BasePermission
 from rest_framework.request import Request
 
-from core.dataclasses.user_dataclass import UserDataClass
+from backend.core.dataclasses.user_dataclass import UserDataClass
 
 
 class IsAdminOrWriteOnlyPermission(BasePermission):
