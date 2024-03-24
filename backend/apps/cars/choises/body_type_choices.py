@@ -1,7 +1,7 @@
 import os
 
 # Set the path to the `choices` directory
-choices_dir = '/path/to/your/project/apps/cars/choices'
+choices_dir = '/path/to/AutoRiaClone__project/apps/cars/choices'
 
 # Create the `body_type_choices.py` file
 body_type_file = os.path.join(choices_dir, 'body_type_choices.py')
