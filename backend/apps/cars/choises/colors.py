@@ -1,7 +1,7 @@
 import os
 
 # Set the path to the `choices` directory
-choices_dir = '/path/to/your/project/apps/cars/choices'
+choices_dir = '/path/to/AutoRiaClone__project87/apps/cars/choices'
 
 
 init_file = os.path.join(choices_dir, '__init__.py')
