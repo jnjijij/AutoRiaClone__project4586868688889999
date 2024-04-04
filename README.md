@@ -11,7 +11,7 @@ The backend API is built using Django and provides endpoints for managing cars a
 1. Navigate to the `backend` directory.
 
 2. Run the backend server using `django-admin startproject myproject`.
-3.  3. Run the backend server using `cd myproject`.
+3. Run the backend server using `cd myproject`.
 4. Run the backend server using `python manage.py runserver 127.0.0.1:3000`.
 
 ### Endpoints
